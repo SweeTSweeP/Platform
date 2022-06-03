@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Crystal
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ea732ae141101d440acc8f2795ee3a0c
+    m_Address: Enemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: acfde3356390ef14bb1a6dac612f2d39, type: 2}
   m_SchemaSet:

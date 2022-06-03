@@ -10,7 +10,7 @@ namespace Infrastructure.States
     public class MenuState : IState
     {
         private const string StartButtonTag = "StartButton";
-        private const string MainScene = "MainScene";
+        private const string MenuScene = "ManuScene";
 
         private readonly IGameStateMachine _gameStateMachine;
 
@@ -24,7 +24,7 @@ namespace Infrastructure.States
 
         private async void AddListener()
         {
-            await UniTask.WaitUntil(() => SceneManager.GetActiveScene().name != MainScene);
+            await UniTask.WaitUntil(() => SceneManager.GetActiveScene().name != MenuScene);
             
             GameObject
                 .FindWithTag(StartButtonTag)

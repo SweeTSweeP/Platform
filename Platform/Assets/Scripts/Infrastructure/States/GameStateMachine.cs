@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Crystal;
 using Infrastructure.SceneManagement;
 
 namespace Infrastructure.States
@@ -10,13 +11,13 @@ namespace Infrastructure.States
 
         private IState _activeState;
 
-        public GameStateMachine(ISceneLoader sceneLoader)
+        public GameStateMachine(ISceneLoader sceneLoader, ICrystalSpawner crystalSpawner)
         {
             _states = new Dictionary<Type, IState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
                 [typeof(MenuState)] = new MenuState(this),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, crystalSpawner),
                 [typeof(GameLoopState)] = new GameLoopState()
             };
         }

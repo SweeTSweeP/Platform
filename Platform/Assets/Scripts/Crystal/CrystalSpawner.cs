@@ -22,12 +22,27 @@ namespace Crystal
 
         private int _currentCrystalsCount;
         private bool _isWaitingToSpawn;
+        private bool _isEnd;
 
         public void Initialize()
         {
+            _isEnd = false;
+            
             LoadCrystal();
 
             _parent = new GameObject("Crystals").transform;
+        }
+
+        public void TearDown()
+        {
+            _isEnd = true;
+
+            if (_parent is null) return;
+            
+            foreach (Transform child in _parent)
+            {
+                Object.Destroy(child.gameObject);
+            }
         }
 
         public void SpawnStarterCrystals()
@@ -56,7 +71,9 @@ namespace Crystal
 
             _isWaitingToSpawn = true;
 
-            await UniTask.Delay(TimeSpan.FromSeconds(3));
+            await UniTask.Delay(TimeSpan.FromSeconds(7));
+
+            if(_isEnd) return;
 
             TryToSpawnCrystal(true);
             

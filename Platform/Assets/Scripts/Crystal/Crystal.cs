@@ -7,7 +7,8 @@ namespace Crystal
     public class Crystal : MonoBehaviour
     {
         private const string PlayerTag = "Player";
-
+        private const string EnemyTag = "Enemy";
+        
         public event Action CrystalCreated;
         public event Action CrystalDestroyed;
 
@@ -16,7 +17,7 @@ namespace Crystal
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag(PlayerTag)) return;
+            if (!other.gameObject.CompareTag(PlayerTag) && !other.gameObject.CompareTag(EnemyTag)) return;
             
             CrystalDestroyed?.Invoke();
             Destroy(gameObject);

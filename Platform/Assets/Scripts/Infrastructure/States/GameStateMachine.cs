@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Crystal;
 using Infrastructure.SceneManagement;
+using Infrastructure.UI;
 
 namespace Infrastructure.States
 {
@@ -18,7 +19,8 @@ namespace Infrastructure.States
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
                 [typeof(MenuState)] = new MenuState(this),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, crystalSpawner),
-                [typeof(GameLoopState)] = new GameLoopState()
+                [typeof(GameLoopState)] = new GameLoopState(crystalSpawner),
+                [typeof(EndState)] = new EndState(this)
             };
         }
 

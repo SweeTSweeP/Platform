@@ -8,6 +8,8 @@ namespace Enemy
     public class Enemy : MonoBehaviour
     {
         private const string SpawnPointTag = "SpawnPoint";
+
+        [SerializeField] private float enemySpeed;
         
         private Transform[] _points;
         private int _destPoint;
@@ -19,6 +21,7 @@ namespace Enemy
             
             _agent = GetComponent<NavMeshAgent>();
             _agent.autoBraking = false;
+            _agent.speed = enemySpeed;
 
             GotoNextPoint();
         }

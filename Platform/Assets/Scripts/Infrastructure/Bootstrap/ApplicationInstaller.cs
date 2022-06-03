@@ -1,6 +1,7 @@
 using Crystal;
 using Infrastructure.SceneManagement;
 using Infrastructure.States;
+using Infrastructure.UI;
 using Zenject;
 
 namespace Infrastructure.Bootstrap
@@ -9,6 +10,8 @@ namespace Infrastructure.Bootstrap
     {
         public override void InstallBindings()
         {
+            DontDestroyOnLoad(gameObject);
+            
             BindCrystalSpawner();
             BindSceneLoader();
             BindStateMachine();
